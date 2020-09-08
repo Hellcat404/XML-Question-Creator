@@ -51,7 +51,7 @@
             this.tctlQuestions.Location = new System.Drawing.Point(0, 28);
             this.tctlQuestions.Name = "tctlQuestions";
             this.tctlQuestions.SelectedIndex = 0;
-            this.tctlQuestions.Size = new System.Drawing.Size(652, 332);
+            this.tctlQuestions.Size = new System.Drawing.Size(665, 332);
             this.tctlQuestions.TabIndex = 0;
             this.tctlQuestions.Click += new System.EventHandler(this.tctlQuestions_Click);
             // 
@@ -60,7 +60,7 @@
             this.tabAdd.Location = new System.Drawing.Point(4, 22);
             this.tabAdd.Name = "tabAdd";
             this.tabAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdd.Size = new System.Drawing.Size(644, 306);
+            this.tabAdd.Size = new System.Drawing.Size(657, 306);
             this.tabAdd.TabIndex = 2;
             this.tabAdd.Text = "Add Question";
             this.tabAdd.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             this.tsExport});
             this.tsTools.Location = new System.Drawing.Point(0, 0);
             this.tsTools.Name = "tsTools";
-            this.tsTools.Size = new System.Drawing.Size(655, 25);
+            this.tsTools.Size = new System.Drawing.Size(668, 25);
             this.tsTools.TabIndex = 1;
             this.tsTools.Text = "toolStrip1";
             // 
@@ -94,7 +94,7 @@
             // 
             this.tsNew.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsNew.Name = "tsNew";
-            this.tsNew.Size = new System.Drawing.Size(180, 22);
+            this.tsNew.Size = new System.Drawing.Size(112, 22);
             this.tsNew.Text = "New";
             this.tsNew.Click += new System.EventHandler(this.tsNew_Click);
             // 
@@ -102,14 +102,14 @@
             // 
             this.tsOpen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsOpen.Name = "tsOpen";
-            this.tsOpen.Size = new System.Drawing.Size(180, 22);
+            this.tsOpen.Size = new System.Drawing.Size(112, 22);
             this.tsOpen.Text = "Open...";
             // 
             // tsExit
             // 
             this.tsExit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsExit.Name = "tsExit";
-            this.tsExit.Size = new System.Drawing.Size(180, 22);
+            this.tsExit.Size = new System.Drawing.Size(112, 22);
             this.tsExit.Text = "Exit";
             this.tsExit.Click += new System.EventHandler(this.tsExit_Click);
             // 
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 362);
+            this.ClientSize = new System.Drawing.Size(668, 362);
             this.Controls.Add(this.tsTools);
             this.Controls.Add(this.tctlQuestions);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
