@@ -65,10 +65,22 @@ namespace XML_Question_Creator
 
         private void tsExport_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < questions.Count; i++) {
-                questions[i].setText(((QuestionTab)tctlQuestions.TabPages[i])._text);
-                questions[i].setImage(((QuestionTab)tctlQuestions.TabPages[i])._image);
-                questions[i].setAnswers(((QuestionTab)tctlQuestions.TabPages[i]).getAnswers());
+            FolderBrowserDialog fd = new FolderBrowserDialog();
+            fd.ShowNewFolderButton = false;
+            fd.Description = "Select the Android Studio project folder.";
+            if(fd.ShowDialog() == DialogResult.OK) {
+                string apath = fd.SelectedPath;
+                string dpath = apath + @"\app\src\main\res\drawable\";
+                string xpath = apath + @"\app\src\main\res\xml";
+
+                for (int i = 0; i < questions.Count; i++) {
+                    questions[i].setText(((QuestionTab)tctlQuestions.TabPages[i])._text);
+                    questions[i].setImage(((QuestionTab)tctlQuestions.TabPages[i])._image);
+                    questions[i].setAnswers(((QuestionTab)tctlQuestions.TabPages[i]).getAnswers());
+                }
+                for (int i = 0; i < questions.Count; i++) {
+                    questions[i].getImage().Save(String.Format("{0}Q{1}.png",dpath , i),System.Drawing.Imaging.ImageFormat.Png);
+                }
             }
         }
     }
