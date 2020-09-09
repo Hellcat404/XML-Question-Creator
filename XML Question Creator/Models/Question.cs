@@ -20,6 +20,10 @@ namespace XML_Question_Creator.Models
             answers = a;
         }
 
+        public void setText(string t) { text = t; }
+        public void setImage(Image i) { image = i; }
+        public void setAnswers(List<Answer> a) { answers = a; }
+
         public string getText() { return text; }
         public Image getImage() { return image; }
         public List<Answer> getAnswers() { return answers; }

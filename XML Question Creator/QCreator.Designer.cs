@@ -123,6 +123,7 @@
             this.tsExport.Name = "tsExport";
             this.tsExport.Size = new System.Drawing.Size(45, 22);
             this.tsExport.Text = "Export";
+            this.tsExport.Click += new System.EventHandler(this.tsExport_Click);
             // 
             // frmQCreator
             // 

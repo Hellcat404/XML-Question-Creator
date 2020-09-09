@@ -62,5 +62,14 @@ namespace XML_Question_Creator
             if ((((TabControl)sender).SelectedIndex) == (((TabControl)sender).TabCount - 1))
                 AddQuestion();
         }
+
+        private void tsExport_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < questions.Count; i++) {
+                questions[i].setText(((QuestionTab)tctlQuestions.TabPages[i])._text);
+                questions[i].setImage(((QuestionTab)tctlQuestions.TabPages[i])._image);
+                questions[i].setAnswers(((QuestionTab)tctlQuestions.TabPages[i]).getAnswers());
+            }
+        }
     }
 }

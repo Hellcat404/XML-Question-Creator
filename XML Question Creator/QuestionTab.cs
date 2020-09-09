@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using XML_Question_Creator.Models;
 
@@ -14,6 +11,12 @@ namespace XML_Question_Creator
         private frmQCreator _QCreator;
 
         public int question = 0;
+        public string _text = "";
+        public Image _image = null;
+        private List<Answer> answers;
+
+        private TextBox qimagetextbox;
+        private PictureBox qimagepicturebox;
 
         private Panel _apanel;
         public List<AnswerPanel> answerpanels;
@@ -38,6 +41,7 @@ namespace XML_Question_Creator
             qtextbox.Multiline = true;
             qtextbox.Size = new Size(271, 72);
             qtextbox.Location = new Point(8, 29);
+            qtextbox.TextChanged += new EventHandler(txtQText_TextChanged);
             this.Controls.Add(qtextbox);
 
             Label qimagelbl = new Label();
@@ -48,7 +52,7 @@ namespace XML_Question_Creator
             qimagelbl.Location = new Point(8, 114);
             this.Controls.Add(qimagelbl);
 
-            TextBox qimagetextbox = new TextBox();
+            qimagetextbox = new TextBox();
             qimagetextbox.Name = "txtQImage";
             qimagetextbox.Font = new Font(this.Font.Name, this.Font.Size, FontStyle.Regular);
             qimagetextbox.Size = new Size(187, 22);
@@ -64,10 +68,11 @@ namespace XML_Question_Creator
             browsebutton.Click += new EventHandler(btnBrowse_Click);
             this.Controls.Add(browsebutton);
 
-            PictureBox qimagepicturebox = new PictureBox();
+            qimagepicturebox = new PictureBox();
             qimagepicturebox.Name = "pbQImage";
             qimagepicturebox.Size = new Size(90, 90);
             qimagepicturebox.Location = new Point(11, 156);
+            qimagepicturebox.SizeMode = PictureBoxSizeMode.Zoom;
             this.Controls.Add(qimagepicturebox);
 
             Button removebutton = new Button();
@@ -106,7 +111,34 @@ namespace XML_Question_Creator
         }
 
         private void btnBrowse_Click(object sender, EventArgs e) {
-            
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Filter = "png files (*.png)|*.png|bmp files (*.bmp)|*.bmp|jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+            fd.FilterIndex = 0;
+            fd.RestoreDirectory = true;
+            string fpath = "";
+            if(fd.ShowDialog() == DialogResult.OK) {
+                fpath = fd.FileName;
+                _image = Image.FromFile(fpath);
+                qimagetextbox.Text = fpath;
+                qimagepicturebox.Image = _image;
+            }
+            else {
+                _image = null;
+                qimagetextbox.Text = fpath;
+                qimagepicturebox.Image = null;
+            }
+        }
+
+        public List<Answer> getAnswers() {
+            answers = new List<Answer>();
+            for (int i = 0; i < answerpanels.Count; i++) {
+                answers.Add(new Answer(answerpanels[i]._text,answerpanels[i]._correct));
+            }
+            return answers;
+        }
+
+        private void txtQText_TextChanged(object sender, EventArgs e) {
+            _text = ((TextBox)sender).Text;
         }
 
         private void btnQRemove_Click(object sender, EventArgs e) {

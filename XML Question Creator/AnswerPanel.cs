@@ -13,6 +13,9 @@ namespace XML_Question_Creator
         Panel _apanel;
         public int answer = 0;
 
+        public string _text = "";
+        public bool _correct = false;
+
         Label answerlabel;
 
         public AnswerPanel(Panel parent, int answers) {
@@ -34,6 +37,7 @@ namespace XML_Question_Creator
             answertextbox.Font = new Font(parent.Font.Name, parent.Font.Size, FontStyle.Regular);
             answertextbox.Size = new Size(201, 22);
             answertextbox.Location = new Point(25, 0);
+            answertextbox.TextChanged += new EventHandler(txtText_TextChanged);
             this.Controls.Add(answertextbox);
 
             CheckBox answercheckbox = new CheckBox();
@@ -42,6 +46,7 @@ namespace XML_Question_Creator
             answercheckbox.Font = new Font(parent.Font.Name, parent.Font.Size, FontStyle.Regular);
             answercheckbox.Size = new Size(66, 17);
             answercheckbox.Location = new Point(232, 2);
+            answercheckbox.CheckedChanged += new EventHandler(cbCorrect_CheckedChanged);
             this.Controls.Add(answercheckbox);
 
             Button deleteanswerbutton = new Button();
@@ -50,6 +55,14 @@ namespace XML_Question_Creator
             deleteanswerbutton.Location = new Point(300, -1);
             deleteanswerbutton.Click += new EventHandler(deleteAnswer);
             this.Controls.Add(deleteanswerbutton);
+        }
+
+        private void cbCorrect_CheckedChanged(object sender, EventArgs e) {
+            _correct = ((CheckBox)sender).Checked;
+        }
+
+        private void txtText_TextChanged(object sender, EventArgs e) {
+            _text = ((TextBox)sender).Text;
         }
 
         private void deleteAnswer(object sender, EventArgs e) {
