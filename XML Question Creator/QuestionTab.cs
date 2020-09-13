@@ -118,7 +118,10 @@ namespace XML_Question_Creator
             string fpath = "";
             if(fd.ShowDialog() == DialogResult.OK) {
                 fpath = fd.FileName;
-                _image = Image.FromFile(fpath);
+                Image img = Image.FromFile(fpath);
+                float scale = 200f/img.Width;
+                Bitmap newimg = new Bitmap(img, new Size((int)(img.Width * scale), (int)(img.Height * scale)));
+                _image = newimg;
                 qimagetextbox.Text = fpath;
                 qimagepicturebox.Image = _image;
             }
